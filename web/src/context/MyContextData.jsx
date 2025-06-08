@@ -9,7 +9,9 @@ const MyContextData = ({children}) => {
     const [show, setShow] = useState(false);
 
     const[inPut, setInPut] = useState("")
-    const[filterproduct, setFilterProduct] = useState([Product])
+    const[filterproduct, setFilterProduct] = useState(Product)
+    const [cartItems, setCartItems] = useState([]);
+    const [favoriteItems, setFavoriteItems] = useState([]);
 
 
     const handleClose = () => setShow(false);
@@ -18,21 +20,18 @@ const MyContextData = ({children}) => {
     const search_product = (e) =>{
       const value = e.target.value
       setInPut(value)
-      if(inPut === 0){
-      setFilterProduct(Product)
-      return
+      if(value === ""){
+        setFilterProduct(Product)
+      } else {
+        const filtered = Product.filter(
+          item =>
+            item.Type.toLowerCase().includes(value.toLowerCase()) ||
+            item.Desc.toLowerCase().includes(value.toLowerCase()) ||
+            item.Category.toLowerCase().includes(value.toLowerCase())
+        );
+        setFilterProduct(filtered);
+      }
     }
-
-        // console.log(value)
-    }
-   
-    const search_inputproduct = () =>{
-      const filterdata =Product.filter(a=>a.Type.toLowerCase().includes(value.toLowerCase())||a.Category.toLowerCase().includes(value.toLowerCase())
-     );
-     setFilterProduct(filterdata)
-        }
-
-
    
     
       // offcanvas for shop page
@@ -40,6 +39,54 @@ const MyContextData = ({children}) => {
 
     const handleClose1 = () => setShow1(false);
     const handleShow1 = () => setShow1(true);
+
+    // Cart Functions
+    const addToCart = (product) => {
+      setCartItems(prevItems => {
+        const existingItem = prevItems.find(item => item.Id === product.Id);
+        if (existingItem) {
+          return prevItems.map(item =>
+            item.Id === product.Id ? { ...item, quantity: item.quantity + 1 } : item
+          );
+        } else {
+          return [...prevItems, { ...product, quantity: 1 }];
+        }
+      });
+    };
+
+    const removeFromCart = (productId) => {
+      setCartItems(prevItems => prevItems.filter(item => item.Id !== productId));
+    };
+
+    const updateQuantity = (productId, quantity) => {
+      setCartItems(prevItems => {
+        if (quantity <= 0) {
+          return prevItems.filter(item => item.Id !== productId);
+        }
+        return prevItems.map(item =>
+          item.Id === productId ? { ...item, quantity: quantity } : item
+        );
+      });
+    };
+
+    // Favorite Functions
+    const addToFavorites = (product) => {
+      setFavoriteItems(prevItems => {
+        const existingItem = prevItems.find(item => item.Id === product.Id);
+        if (!existingItem) {
+          return [...prevItems, product];
+        }
+        return prevItems; // Or implement toggle: prevItems.filter(item => item.Id !== product.Id)
+      });
+    };
+
+    const removeFromFavorites = (productId) => {
+      setFavoriteItems(prevItems => prevItems.filter(item => item.Id !== productId));
+    };
+
+    const isFavorite = (productId) => {
+      return favoriteItems.some(item => item.Id === productId);
+    };
 
     const ContextValue = {
         show,
@@ -50,9 +97,16 @@ const MyContextData = ({children}) => {
         handleShow1,
         inPut,
         setInPut,
-        search_product, 
-        search_inputproduct,
+        search_product,
         filterproduct,
+        cartItems,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        favoriteItems,
+        addToFavorites,
+        removeFromFavorites,
+        isFavorite,
        
     }
   

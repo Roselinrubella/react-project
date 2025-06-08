@@ -1,11 +1,12 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import React, { useContext } from 'react'
+import { Container, Row, Col, Button } from 'react-bootstrap' // Added Button
 import {Card, CardBody} from 'react-bootstrap'
-import { Product } from '../../assets/assets'
 import Dropdown from 'react-bootstrap/Dropdown';
+import { Mycontext } from '../../context/MyContextData';
 
 
 const Shopmenu = () => {
+  const { filterproduct, addToCart, addToFavorites, removeFromFavorites, isFavorite } = useContext(Mycontext); // Added favorites context
   return (
     <>
     <br />
@@ -43,7 +44,7 @@ const Shopmenu = () => {
             </Row>
     
             <Row > 
-              {Product.filter((a)=>a.Category==="Shop").map((value, index) =>{
+              {filterproduct.filter(value => value.Category === "Shop").map((value, index) =>{
                 return(
                   <Col lg="3" md="6" sm="12" className='g-2' key={index}>
                     <Card className='border-0'>
@@ -51,7 +52,21 @@ const Shopmenu = () => {
                       <CardBody>
                         <h6>{value.Type}</h6>
                         <p className='text-truncate'>{value.Desc}</p>
-                        <h6>{value.Price}</h6>
+                        <div className="d-flex justify-content-between align-items-center">
+                          <h6>{value.Price}</h6>
+                          <i
+                            className={isFavorite(value.Id) ? "bi bi-heart-fill text-danger" : "bi bi-heart"}
+                            style={{ cursor: 'pointer', fontSize: '1.2rem' }}
+                            onClick={() => {
+                              if (isFavorite(value.Id)) {
+                                removeFromFavorites(value.Id);
+                              } else {
+                                addToFavorites(value);
+                              }
+                            }}
+                          ></i>
+                        </div>
+                        <Button variant="primary" className="w-100" onClick={() => addToCart(value)}>Add to Cart</Button>
                       </CardBody>
                     </Card>
                   </Col>

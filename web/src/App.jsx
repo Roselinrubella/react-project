@@ -15,6 +15,8 @@ import Connectwithus from './Component/Aboutpagecom/pages/Connectwithus'
 import OurMIssion from './Component/Aboutpagecom/pages/OurMIssion'
 import Productcom from './Component/Commoncom/Productcom'
 import Sidebar from './Component/Shopsidebarcom/Sidebar'
+import CartPage from './Pages/CartPage'; // Import CartPage
+import FavoritesPage from './Pages/FavoritesPage'; // Import FavoritesPage
 import MyContextData from './context/MyContextData'
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
         <Route path='/aboutus/mission' element={<OurMIssion />}/>
         <Route path='/aboutus/connect' element={<Connectwithus />} />
         <Route path="/product" element={<Productcom />}/>    
+        <Route path='/cart' element={<CartPage />} /> {/* Add CartPage Route */}
+        <Route path='/favorites' element={<FavoritesPage />} /> {/* Add FavoritesPage Route */}
         
       </Routes>
       </MyContextData>
