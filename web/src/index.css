@@ -1,0 +1,102 @@
+.BootstrapNavbar{
+    position: sticky;
+    top:2;
+    z-index: 1000;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after
+{
+    font-size: 1px !important;
+    background-color: none !important;
+    
+}
+
+#basic-nav-dropdown{
+    color:black   
+}
+#footerbackground{
+    background-color: black;
+}
+#hover-effects:hover{
+    background-color: black;
+}
+.accordion-body{
+    /* Style for the body */
+  padding: 10px 12px;
+  background-color: transparent; /* Ensure body is also white */
+}
+.Accordion-Header{
+     /* Style for the header */
+  background-color: transparent; /* White background */
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically center the icon */
+  justify-content: space-between; /* Space between title and icon */
+  font-weight: bold;
+  border-bottom: 1px solid #ddd; /* Add a border-bottom, if needed */
+}
+.Accordion-Header{
+    background-color: #f0f0f0; /* Optional: Slight background change on hover */
+}
+.accordion-button:not(.collapsed){
+    color:black !important;
+    background-color: white !important;
+}
+.accordion-button:focus{
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+
+.image-container{
+    position: relative;
+    overflow: hidden;
+}
+.hover-icons{
+    position: absolute;
+    color: rgb(238, 234, 234);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    top: 20%;
+    right: -25%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease-in-out;
+    ;
+    opacity: 50%;
+}
+.hover-icons:hover {
+    opacity: 1;
+    color: black;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1)
+   
+}
+.about-home{
+    background-color: black;
+    color: white;
+    padding: 80px;
+    text-align: center;
+}
+.abouth5{
+    font-size: 60px;
+    text-wrap: 50px;
+}
+.Navabout1{
+    font-size:35px;
+    margin-left: 15%;
+    justify-content:end;
+}
+.aboutfirsth1{
+    font-size: 50px;
+}
+.aboutfirstp{
+    font-size: 20px;
+}
+#basic-navbar-nav1{
+    text-align: justify;
+}
+

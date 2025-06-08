@@ -1,0 +1,53 @@
+import React from 'react'
+import { Container, Form, Row, Col } from 'react-bootstrap'
+import { mix } from '../../assets/assets'
+
+
+
+const Getintouchcom = () => {
+  return (
+    <>
+    <br />
+    <br />
+    <Container>
+        <Row>
+            <Col lg="12" md="12" sm="12">
+           <h1>Get In Touch</h1> 
+            </Col>
+        </Row>
+        <Row>
+            <Col lg="6" md="6" sm="12">
+            <Form className='form-control'>
+               <Row>
+                <Col lg="12" md="6" sm="12">
+                <input type="text" placeholder="Your Name"className='form-control'/>
+                <br />
+                <br />
+                  <input type="text" placeholder='Your Email' className='form-control' />
+                  <br />
+                  <br />
+                    <input type="text" placeholder='Subject' className='form-control' />
+                    <br />
+                    <br />
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Your Message(option)" className='form-control'></textarea>
+                    <br />
+                    <input type="button"className='btn btn-dark' value='Send Message' />
+                </Col>
+                </Row>
+                </Form>
+            
+            </Col>
+             <Col lg="6" md="6" sm="12">
+            <div>
+              <img src={mix.map} alt="" /> 
+            </div>
+            </Col>
+
+        </Row>
+    </Container>
+    
+    </>
+  )
+}
+
+export default Getintouchcom
