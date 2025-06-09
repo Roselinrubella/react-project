@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Mycontext } from '../context/MyContextData';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
-import Footerpage from '../Component/Footerpage/Footerpage'; // Corrected import path
+import Footerpage from '../Component/HomepageCom/Footerpage'; // Corrected import path
 
 const CheckoutPage = () => {
   const { cartItems } = useContext(Mycontext);

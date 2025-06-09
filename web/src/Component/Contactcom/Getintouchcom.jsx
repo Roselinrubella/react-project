@@ -1,10 +1,14 @@
 import React from 'react'
 import { Container, Form, Row, Col } from 'react-bootstrap'
 import { mix } from '../../assets/assets'
+import { useContext } from 'react'
+import { Mycontext } from '../context/MyContextData';
+
 
 
 
 const Getintouchcom = () => {
+const {onSubmit, result } = useContext(Mycontext);
   return (
     <>
     <br />
@@ -17,7 +21,7 @@ const Getintouchcom = () => {
         </Row>
         <Row>
             <Col lg="6" md="6" sm="12">
-            <Form className='form-control'>
+            <Form className='form-control'onSubmit={onSubmit} >
                <Row>
                 <Col lg="12" md="6" sm="12">
                 <input type="text" placeholder="Your Name"className='form-control'/>
@@ -32,6 +36,7 @@ const Getintouchcom = () => {
                     <textarea name="" id="" cols="30" rows="10" placeholder="Your Message(option)" className='form-control'></textarea>
                     <br />
                     <input type="button"className='btn btn-dark' value='Send Message' />
+                    <span>{result}</span>
                 </Col>
                 </Row>
                 </Form>

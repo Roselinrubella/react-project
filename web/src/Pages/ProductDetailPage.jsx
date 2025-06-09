@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Product } from '../assets/assets';
 import { Mycontext } from '../context/MyContextData';
-import Footerpage from '../Component/Footerpage/Footerpage';
+import Footerpage from '../Component/HomepageCom/Footerpage';
 
 const ProductDetailPage = () => {
   const { id } = useParams();

@@ -13,6 +13,8 @@ const MyContextData = ({children}) => {
     const [cartItems, setCartItems] = useState([]);
     const [favoriteItems, setFavoriteItems] = useState([]);
 
+    const [result, setResult] =useState("");
+
 
     const handleClose = () => setShow(false);
     const handleShow = () => {
@@ -36,6 +38,31 @@ const MyContextData = ({children}) => {
         setFilterProduct(filtered);
       }
     }
+
+    //contact page
+    const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "7c46c13a-7bab-410b-9564-128c3cbce8b8");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+     const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
+  };
+
    
     
       // offcanvas for shop page
@@ -97,6 +124,10 @@ const MyContextData = ({children}) => {
       return favoriteItems.some(item => item.Id === productId);
     };
 
+    //contact page
+
+
+
     const ContextValue = {
         show,
         handleClose,
@@ -116,6 +147,8 @@ const MyContextData = ({children}) => {
         addToFavorites,
         removeFromFavorites,
         isFavorite,
+        onSubmit,
+        result,
        
     }
   
