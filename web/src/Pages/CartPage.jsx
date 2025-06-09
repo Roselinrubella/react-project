@@ -95,9 +95,11 @@ const CartPage = () => {
                   <span>${calculateTotal()}</span>
                 </ListGroup.Item>
               </ListGroup>
-              <Button variant="success" className="w-100 mt-3">
-                Proceed to Checkout
-              </Button>
+              <Link to="/checkout" className="d-grid text-decoration-none">
+                <Button variant="success" className="w-100 mt-3" disabled={cartItems.length === 0}>
+                  Proceed to Checkout
+                </Button>
+              </Link>
             </Card.Body>
           </Card>
         </Col>
