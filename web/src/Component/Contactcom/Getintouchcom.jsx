@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Form, Row, Col } from 'react-bootstrap';
 import { mix } from '../../assets/assets';
 import { useContext } from 'react';
-import { Mycontext } from '../context/MyContextData';
+import { Mycontext } from '../../context/MyContextData';
 
 const Getintouchcom = () => {
   const { onSubmit, result } = useContext(Mycontext);
