@@ -338,7 +338,7 @@ export const Product=[
         Category : "Shop" 
     },
     {
-        Id : '19',
+        Id : '19_2',
         Img : jack2,
         Type : 'Jackets',
         Desc : 'The North Face Denali Jacket, summitgold',
@@ -362,7 +362,7 @@ export const Product=[
         Category : "Shop" 
     },
     {
-        Id : '21',
+        Id : '21_2',
         Img : jack5,
         Type : 'Jackets',
         Desc : 'ST-shirt with contrasting slogan',

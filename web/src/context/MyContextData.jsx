@@ -15,7 +15,11 @@ const MyContextData = ({children}) => {
 
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        setShow(true);
+        setInPut("");
+        setFilterProduct(Product);
+    };
 
     const search_product = (e) =>{
       const value = e.target.value
@@ -73,10 +77,15 @@ const MyContextData = ({children}) => {
     const addToFavorites = (product) => {
       setFavoriteItems(prevItems => {
         const existingItem = prevItems.find(item => item.Id === product.Id);
-        if (!existingItem) {
+        if (existingItem) {
+          // If item exists, remove it (toggle off)
+          alert(`${product.Type} removed from favorites!`);
+          return prevItems.filter(item => item.Id !== product.Id);
+        } else {
+          // If item does not exist, add it (toggle on)
+          alert(`${product.Type} added to favorites!`);
           return [...prevItems, product];
         }
-        return prevItems; // Or implement toggle: prevItems.filter(item => item.Id !== product.Id)
       });
     };
 

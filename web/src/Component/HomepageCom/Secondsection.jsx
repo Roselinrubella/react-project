@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react' // Added useContext
+import { Link } from 'react-router-dom'; // Added Link
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import CardBody from 'react-bootstrap/CardBody'
 import { Product } from '../../assets/assets'
+import { Mycontext } from '../../context/MyContextData'; // Added Mycontext
 import Container from 'react-bootstrap/esm/Container'
 
 
 
 function Secondsection() {
+  const { addToCart, addToFavorites, isFavorite } = useContext(Mycontext); // Added isFavorite
 
   return (
     <>
@@ -34,17 +37,21 @@ function Secondsection() {
           <Col lg="3" md="6" sm="12" className='g-2' key={index}>
                 <Card className='border-0'>
                   <div className='image-container'>
-                  <img src={value.Img} className='img-fluid' alt="img" />
+                  <Link to={`/product/${value.Id}`}>
+                    <img src={value.Img} className='img-fluid' alt="img" />
+                  </Link>
                   <div className='hover-icons'>
                     <Row className='g-3'>
-                  <Col lg='12'><i className="bi bi-search"></i></Col>
-                  <Col lg='12'> <i className="bi bi-heart"></i></Col>
-                  <Col lg='12'><i className="bi bi-cart"></i></Col>
+                  <Col lg='12'><Link to={`/product/${value.Id}`}><i className="bi bi-search"></i></Link></Col>
+                  <Col lg='12'> <button onClick={() => addToFavorites(value)} className='bg-transparent border-0'><i className={`bi ${isFavorite(value.Id) ? 'bi-heart-fill text-danger' : 'bi-heart'}`}></i></button></Col>
+                  <Col lg='12'><button onClick={() => addToCart(value)} className='bg-transparent border-0'><i className="bi bi-cart"></i></button></Col>
                   </Row>
                   </div>
                   </div>
                   <CardBody>
-                    <h5>{value.Type}</h5>
+                    <Link to={`/product/${value.Id}`} className='text-decoration-none text-dark'>
+                      <h5>{value.Type}</h5>
+                    </Link>
                     <p className='text-truncate'>{value.Desc}</p>
                     <h5>{value.Price}</h5>
                   </CardBody>

@@ -17,6 +17,8 @@ import Productcom from './Component/Commoncom/Productcom'
 import Sidebar from './Component/Shopsidebarcom/Sidebar'
 import CartPage from './Pages/CartPage'; // Import CartPage
 import FavoritesPage from './Pages/FavoritesPage'; // Import FavoritesPage
+import ProductDetailPage from './Pages/ProductDetailPage'; // Import ProductDetailPage
+import CheckoutPage from './Pages/CheckoutPage'; // Import CheckoutPage
 import MyContextData from './context/MyContextData'
 
 function App() {
@@ -39,6 +41,8 @@ function App() {
         <Route path="/product" element={<Productcom />}/>    
         <Route path='/cart' element={<CartPage />} /> {/* Add CartPage Route */}
         <Route path='/favorites' element={<FavoritesPage />} /> {/* Add FavoritesPage Route */}
+        <Route path="/product/:id" element={<ProductDetailPage />} /> {/* Add ProductDetailPage Route */}
+        <Route path="/checkout" element={<CheckoutPage />} /> {/* Add CheckoutPage Route */}
         
       </Routes>
       </MyContextData>
